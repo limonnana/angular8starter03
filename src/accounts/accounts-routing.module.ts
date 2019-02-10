@@ -7,16 +7,17 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: fromContainers.DashboardContainerComponent
+    component: fromContainers.AccountsListContainerComponent
   },
   {
-    path: 'accounts',
-    loadChildren: 'src/accounts/accounts.module#AccountsModule'
+    path: 'create',
+    pathMatch: 'full',
+    component: fromContainers.CreateAccountContainerComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AccountsRoutingModule {}

@@ -1,0 +1,4 @@
+<app-create-account
+  [accountTypes]="accountTypes$ | async"
+  (createAccountEmitter)="createAccount($event)"
+></app-create-account>

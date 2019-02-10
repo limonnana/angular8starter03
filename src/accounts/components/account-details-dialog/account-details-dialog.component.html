@@ -1,0 +1,79 @@
+<h1 mat-dialog-title>Account Details</h1>
+<div mat-dialog-content>
+  <mat-tab-group>
+    <mat-tab label="Account Details">
+      <mat-list>
+        <mat-list-item>
+          <mat-icon matListIcon>info</mat-icon>
+          <h3 matLine>{{ account.title }}</h3>
+          <p matLine>
+            <span class="text-caption">Account Title</span>
+          </p>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>card</mat-icon>
+          <h3 matLine>{{ account.accountType }}</h3>
+          <p matLine>
+            <span class="text-caption">Account Type</span>
+          </p>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>today</mat-icon>
+          <h3 matLine>{{ account.opened | date: 'm/d/yy' }}</h3>
+          <p matLine>
+            <span class="text-caption">Account Opened Date</span>
+          </p>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>attach_money</mat-icon>
+          <h3 matLine>
+            {{ account.currBalance | currency: 'USD':'symbol':'2.2-2' }}
+          </h3>
+          <p matLine>
+            <span class="text-caption">Current Balance</span>
+          </p>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>
+            {{ account.active ? 'check' : 'warning' }}
+          </mat-icon>
+          <p matLine>
+            <span class="text-caption">Account Active</span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+    <mat-tab label="Transactions">
+      <mat-list>
+        <mat-list-item *ngFor="let txn of account.transactions">
+          <mat-icon matListIcon>
+            {{
+              txn.transactionType === 'DEBIT'
+                ? 'arrow_upward'
+                : 'arrow_downward'
+            }}
+          </mat-icon>
+          <h3 matLine>{{ txn.amount }}</h3>
+          <h4 matLine>{{ txn.title }}</h4>
+          <p matLine>
+            <span class="text-caption">
+              {{
+                txn.transactionType +
+                  ', ' +
+                  txn.paymentType +
+                  ', ' +
+                  (txn.transactionDate | date: 'm/d/yy')
+              }}
+            </span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<div mat-dialog-actions>
+  <span class="fill-space"></span>
+  <button mat-icon-button color="warn" (click)="onCloseClick()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

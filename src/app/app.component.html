@@ -1,21 +1,59 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
-<router-outlet></router-outlet>
+<mat-sidenav-container class="app-content">
+  <mat-sidenav
+    #appSideNav
+    [mode]="viewportMobileQuery.matches ? 'over' : 'side'"
+    [opened]="!viewportMobileQuery.matches"
+    [fixedInViewport]="viewportMobileQuery.matches"
+  >
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <h1>Menu</h1>
+        <span class="fill-space"></span>
+        <button
+          mat-icon-button
+          *ngIf="viewportMobileQuery.matches"
+          (click)="appSideNav.close()"
+        >
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-nav-list>
+      <!-- set the `routerLink` on the `mat-list-item` that way it will route if any of the list item is clicked -->
+      <mat-list-item routerLink="/">
+        <mat-icon matListIcon>home</mat-icon>
+        <a matLine>Home</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="/accounts">
+        <mat-icon matListIcon>account_balance</mat-icon>
+        <a matLine>Accounts</a>
+      </mat-list-item>
+      <mat-list-item routerLink="/accounts/create">
+        <mat-icon matListIcon>add</mat-icon>
+        <a matLine>Create Account</a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-content">
+    <mat-toolbar color="primary" class="main-toolbar">
+      <mat-toolbar-row>
+        <button
+          mat-icon-button
+          (click)="appSideNav.toggle()"
+          *ngIf="viewportMobileQuery.matches"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <h1 routerLink="/" class="app-brand">
+          Bank Account Manager
+        </h1>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="main-content-inner">
+      <div class="content-area">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

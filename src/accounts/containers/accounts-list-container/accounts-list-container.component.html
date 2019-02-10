@@ -1,0 +1,10 @@
+<app-accounts-list
+  [accounts]="accounts$ | async"
+  (viewAccountDetails)="viewAccountDetails($event)"
+  *ngIf="!(loading$ | async)"
+></app-accounts-list>
+<!-- indeterminate progress bar --->
+<div *ngIf="(loading$ | async)">
+  <h1 class="display-1">Loading Accounts</h1>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>

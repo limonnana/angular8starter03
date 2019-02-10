@@ -1,0 +1,89 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Create Account
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form
+      novalidate
+      [formGroup]="accountFormGroup"
+      (submit)="onSubmit(accountFormGroup.value)"
+    >
+      <mat-form-field
+        appearance="outline"
+        class="full-width-input"
+        color="primary"
+      >
+        <mat-label>Account Title</mat-label>
+        <input matInput formControlName="title" required />
+        <mat-error *ngIf="accountFormGroup.controls['title'].invalid">
+          Account Title is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        class="full-width-input"
+        color="primary"
+      >
+        <mat-label>Account Type</mat-label>
+        <mat-select required formControlName="accountType">
+          <mat-option
+            *ngFor="let accountType of accountTypes"
+            [value]="accountType"
+          >
+            {{ accountType }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="accountFormGroup.controls['accountType'].invalid">
+          Account Type is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        class="full-width-input give-me-some-space top margin-25"
+        color="primary"
+      >
+        <mat-label>When was the Account Opened</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="Choose a date"
+          formControlName="opened"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="accountFormGroup.controls['opened'].invalid">
+          Account Opened date is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        class="full-width-input give-me-some-space top margin-25"
+        color="primary"
+        hintLabel="What is the current balance in the account"
+      >
+        <mat-label>Account Current Balance</mat-label>
+        <span matPrefix><mat-icon>attach_money</mat-icon></span>
+        <input matInput formControlName="currBalance" type="number" required />
+        <mat-error *ngIf="accountFormGroup.controls['currBalance'].invalid">
+          Account Current Balance is required
+        </mat-error>
+      </mat-form-field>
+      <div class="full-width-input give-me-some-space top margin-25">
+        <mat-checkbox formControlName="active">Account is Active</mat-checkbox>
+      </div>
+      <div class="full-width-input give-me-some-space top margin-25">
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="accountFormGroup.invalid"
+        >
+          Create Account
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,33 @@
+.app-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+
+  mat-sidenav {
+    width: 350px;
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+
+    .main-toolbar {
+      flex: 0 0 auto;
+      z-index: 999;
+    }
+
+    .main-content-inner {
+      flex: 1 1 auto;
+      position: relative; /* need this to position inner content */
+      overflow-y: auto;
+
+      .content-area {
+        padding: 15px 30px;
+      }
+    }
+  }
+}
