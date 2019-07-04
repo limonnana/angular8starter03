@@ -50,11 +50,11 @@ export class AccountsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // add ViewChild support for the table MatPagionator
   // allows us to register the paginator with the MatTable
-  @ViewChild(MatPaginator)
+  @ViewChild(MatPaginator, { static: true })
   paginator: MatPaginator;
   // add ViewChild support fot the table column sorting
   // allows us to register the table column sorting with the Mat Table
-  @ViewChild(MatSort)
+  @ViewChild(MatSort, { static: true })
   sort: MatSort;
 
   @Output() viewAccountDetails: EventEmitter<Account> = new EventEmitter<
