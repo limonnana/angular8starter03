@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
 
 import { Account } from 'src/app/models/account.model';
