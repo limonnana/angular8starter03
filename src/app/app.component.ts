@@ -11,16 +11,13 @@ export class AppComponent implements OnDestroy {
 
   private _viewportQueryListener: () => void;
 
-  constructor(
-    private changeDetectionRef: ChangeDetectorRef,
-    private media: MediaMatcher
-  ) {
+  constructor(private changeDetectionRef: ChangeDetectorRef, private media: MediaMatcher) {
     this.viewportMobileQuery = media.matchMedia('(max-width: 600px)');
     this._viewportQueryListener = () => changeDetectionRef.detectChanges();
-    this.viewportMobileQuery.addListener(this._viewportQueryListener);
+    this.viewportMobileQuery.addEventListener('change', this._viewportQueryListener);
   }
 
   ngOnDestroy(): void {
-    this.viewportMobileQuery.removeListener(this._viewportQueryListener);
+    this.viewportMobileQuery.removeEventListener('change', this._viewportQueryListener);
   }
 }

@@ -11,12 +11,7 @@ import * as fromContainers from './containers';
 import * as fromBuilders from './form-builders';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MaterialDesignModule,
-    AccountsRoutingModule
-  ],
+  imports: [CommonModule, ReactiveFormsModule, MaterialDesignModule, AccountsRoutingModule],
   providers: [...fromBuilders.builders],
   declarations: [...fromComponents.components, ...fromContainers.containers],
   entryComponents: [...fromComponents.entryComponents],

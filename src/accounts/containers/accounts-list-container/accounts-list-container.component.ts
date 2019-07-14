@@ -79,13 +79,10 @@ export class AccountsListContainerComponent implements OnInit {
       }
     ];
     // open the account-details-dialog component to display the account details
-    const dialogRef = this.dialog.open(
-      fromComponents.AccountDetailsDialogComponent,
-      {
-        data: account,
-        width: '75%'
-      }
-    );
+    const dialogRef = this.dialog.open(fromComponents.AccountDetailsDialogComponent, {
+      data: account,
+      width: '75%'
+    });
     dialogRef.afterClosed().subscribe(() => {
       console.log('DIALOG CLOSED');
     });

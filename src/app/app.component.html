@@ -9,11 +9,7 @@
       <mat-toolbar-row>
         <h1>Menu</h1>
         <span class="fill-space"></span>
-        <button
-          mat-icon-button
-          *ngIf="viewportMobileQuery.matches"
-          (click)="appSideNav.close()"
-        >
+        <button mat-icon-button *ngIf="viewportMobileQuery.matches" (click)="appSideNav.close()">
           <mat-icon>arrow_back</mat-icon>
         </button>
       </mat-toolbar-row>
@@ -38,11 +34,7 @@
   <mat-sidenav-content class="main-content">
     <mat-toolbar color="primary" class="main-toolbar">
       <mat-toolbar-row>
-        <button
-          mat-icon-button
-          (click)="appSideNav.toggle()"
-          *ngIf="viewportMobileQuery.matches"
-        >
+        <button mat-icon-button (click)="appSideNav.toggle()" *ngIf="viewportMobileQuery.matches">
           <mat-icon>menu</mat-icon>
         </button>
         <h1 routerLink="/" class="app-brand">
@@ -50,10 +42,10 @@
         </h1>
       </mat-toolbar-row>
     </mat-toolbar>
-    <div class="main-content-inner">
-      <div class="content-area">
+    <main class="main-content-inner">
+      <section class="content-area">
         <router-outlet></router-outlet>
-      </div>
-    </div>
+      </section>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

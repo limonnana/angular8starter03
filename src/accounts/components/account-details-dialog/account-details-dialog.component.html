@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Account Details</h1>
-<div mat-dialog-content>
+<section mat-dialog-content>
   <mat-tab-group>
     <mat-tab label="Account Details">
       <mat-list>
@@ -47,33 +47,23 @@
       <mat-list>
         <mat-list-item *ngFor="let txn of account.transactions">
           <mat-icon matListIcon>
-            {{
-              txn.transactionType === 'DEBIT'
-                ? 'arrow_upward'
-                : 'arrow_downward'
-            }}
+            {{ txn.transactionType === 'DEBIT' ? 'arrow_upward' : 'arrow_downward' }}
           </mat-icon>
           <h3 matLine>{{ txn.amount }}</h3>
           <h4 matLine>{{ txn.title }}</h4>
           <p matLine>
             <span class="text-caption">
-              {{
-                txn.transactionType +
-                  ', ' +
-                  txn.paymentType +
-                  ', ' +
-                  (txn.transactionDate | date: 'm/d/yy')
-              }}
+              {{ txn.transactionType + ', ' + txn.paymentType + ', ' + (txn.transactionDate | date: 'm/d/yy') }}
             </span>
           </p>
         </mat-list-item>
       </mat-list>
     </mat-tab>
   </mat-tab-group>
-</div>
-<div mat-dialog-actions>
+</section>
+<section mat-dialog-actions>
   <span class="fill-space"></span>
   <button mat-icon-button color="warn" (click)="onCloseClick()">
     <mat-icon>close</mat-icon>
   </button>
-</div>
+</section>

@@ -14,7 +14,7 @@
       <mat-list-item>
         <mat-icon matListIcon>today</mat-icon>
         <h3 matLine>
-          {{ lastTransaction.transactionDate | date: "MM/dd/yyyy @ hh:mm z" }}
+          {{ lastTransaction.transactionDate | date: 'MM/dd/yyyy @ hh:mm z' }}
         </h3>
         <p matLine>
           <span class="text-caption">Transaction Date</span>
@@ -23,7 +23,7 @@
       <mat-list-item>
         <mat-icon matListIcon>attach_money</mat-icon>
         <h3 matLine>
-          {{ lastTransaction.amount | currency: "USD":"symbol":"2.2-2" }}
+          {{ lastTransaction.amount | currency: 'USD':'symbol':'2.2-2' }}
         </h3>
         <p matLine>
           <span class="text-caption">Amount</span>
@@ -31,11 +31,7 @@
       </mat-list-item>
       <mat-list-item>
         <mat-icon matListIcon>
-          {{
-            lastTransaction.transactionType === "DEBIT"
-              ? "arrow_upward"
-              : "arrow_downward"
-          }}
+          {{ lastTransaction.transactionType === 'DEBIT' ? 'arrow_upward' : 'arrow_downward' }}
         </mat-icon>
         <h3 matLine>{{ lastTransaction.transactionType }}</h3>
         <p matLine>

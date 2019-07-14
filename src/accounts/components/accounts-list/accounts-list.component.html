@@ -5,20 +5,14 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div>
-      <!-- Form Container for our filter form group for the user to filter the accounts list -->
-      <form novalidate [formGroup]="filterTableFormGroup">
-        <mat-form-field appearance="outline" class="full-width-input">
-          <mat-label>Accounts Filter</mat-label>
-          <span matPrefix><mat-icon>search</mat-icon></span>
-          <input
-            matInput
-            formControlName="filter"
-            placeholder="Search by account Title"
-          />
-        </mat-form-field>
-      </form>
-    </div>
+    <!-- Form Container for our filter form group for the user to filter the accounts list -->
+    <form novalidate [formGroup]="filterTableFormGroup">
+      <mat-form-field appearance="outline" class="full-width-input">
+        <mat-label>Accounts Filter</mat-label>
+        <span matPrefix><mat-icon>search</mat-icon></span>
+        <input matInput formControlName="filter" placeholder="Search by account Title" />
+      </mat-form-field>
+    </form>
     <!-- mat tabe container. assign our data source, add sorting, assign the tracking function -->
     <mat-table [dataSource]="accountsDataSource" matSort [trackBy]="trackByFn">
       <!-- define our table columns. you must have a column for every column defined in your columns string array -->
@@ -68,11 +62,7 @@
           Details
         </mat-header-cell>
         <mat-cell *matCellDef="let row">
-          <button
-            mat-icon-button
-            color="accent"
-            (click)="onViewAccountDetails(row)"
-          >
+          <button mat-icon-button color="accent" (click)="onViewAccountDetails(row)">
             <mat-icon>info</mat-icon>
           </button>
         </mat-cell>
@@ -84,12 +74,6 @@
       <mat-row *matRowDef="let row; columns: columns"></mat-row>
     </mat-table>
     <!-- add table pagination -->
-    <mat-paginator
-      #paginator
-      [pageSize]="25"
-      [pageSizeOptions]="[5, 10, 15, 25, 50, 100]"
-      [showFirstLastButtons]="true"
-    >
-    </mat-paginator>
+    <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[5, 10, 15, 25, 50, 100]" [showFirstLastButtons]="true"> </mat-paginator>
   </mat-card-content>
 </mat-card>

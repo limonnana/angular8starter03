@@ -11,13 +11,7 @@ import { Account } from 'src/app/models/account.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateAccountContainerComponent implements OnInit {
-  accountTypes$: Observable<string[]> = of([
-    'CHECKING',
-    'SAVINGS',
-    'CREDIT CARD',
-    'LOAN',
-    'MISC'
-  ]);
+  accountTypes$: Observable<string[]> = of(['CHECKING', 'SAVINGS', 'CREDIT CARD', 'LOAN', 'MISC']);
 
   // snackbar is an Injectable component. Use DI to inject an instance of MatSnackBar
   // we will use this to open a simple snackbar to display the data

@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Input
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 
 import { Transaction } from 'src/app/models/transaction.model';
 import { isNullOrUndefined } from 'util';
@@ -18,11 +13,7 @@ export class DashboardComponent implements OnInit {
   private _lastTransaction: Transaction = null;
 
   @Input() set lastTransaction(txn: Transaction) {
-    if (
-      !isNullOrUndefined(txn) &&
-      (isNullOrUndefined(this._lastTransaction) ||
-        this._lastTransaction.id !== txn.id)
-    ) {
+    if (!isNullOrUndefined(txn) && (isNullOrUndefined(this._lastTransaction) || this._lastTransaction.id !== txn.id)) {
       this._lastTransaction = txn;
     }
   }

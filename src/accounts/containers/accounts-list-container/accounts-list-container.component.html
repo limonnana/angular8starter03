@@ -4,7 +4,7 @@
   *ngIf="!(loading$ | async)"
 ></app-accounts-list>
 <!-- indeterminate progress bar --->
-<div *ngIf="(loading$ | async)">
+<section *ngIf="loading$ | async">
   <h1 class="display-1">Loading Accounts</h1>
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-</div>
+</section>

@@ -1,11 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Output,
-  EventEmitter,
-  Input
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { Account } from 'src/app/models/account.model';
@@ -32,9 +25,7 @@ export class CreateAccountComponent implements OnInit {
     return this._accountTypes;
   }
 
-  @Output() createAccountEmitter: EventEmitter<Account> = new EventEmitter<
-    Account
-  >();
+  @Output() createAccountEmitter: EventEmitter<Account> = new EventEmitter<Account>();
 
   constructor(private accountBuilder: fromBuilders.AccountBuilder) {}
 

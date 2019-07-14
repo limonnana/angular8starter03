@@ -26,9 +26,7 @@ import { Account } from 'src/app/models/account.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountsListComponent implements OnInit, AfterViewInit, OnDestroy {
-  private _accountsDataSource: MatTableDataSource<
-    Account
-  > = new MatTableDataSource<Account>();
+  private _accountsDataSource: MatTableDataSource<Account> = new MatTableDataSource<Account>();
   private _unsubscribe = new Subject<void>();
 
   filterTableFormGroup: FormGroup = null;
@@ -59,9 +57,7 @@ export class AccountsListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSort, { static: true })
   sort: MatSort;
 
-  @Output() viewAccountDetails: EventEmitter<Account> = new EventEmitter<
-    Account
-  >();
+  @Output() viewAccountDetails: EventEmitter<Account> = new EventEmitter<Account>();
 
   constructor(private fb: FormBuilder) {}
 

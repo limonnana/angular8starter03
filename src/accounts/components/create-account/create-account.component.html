@@ -5,33 +5,18 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form
-      novalidate
-      [formGroup]="accountFormGroup"
-      (submit)="onSubmit(accountFormGroup.value)"
-    >
-      <mat-form-field
-        appearance="outline"
-        class="full-width-input"
-        color="primary"
-      >
+    <form novalidate [formGroup]="accountFormGroup" (submit)="onSubmit(accountFormGroup.value)">
+      <mat-form-field appearance="outline" class="full-width-input" color="primary">
         <mat-label>Account Title</mat-label>
         <input matInput formControlName="title" required />
         <mat-error *ngIf="accountFormGroup.controls['title'].invalid">
           Account Title is required
         </mat-error>
       </mat-form-field>
-      <mat-form-field
-        appearance="outline"
-        class="full-width-input"
-        color="primary"
-      >
+      <mat-form-field appearance="outline" class="full-width-input" color="primary">
         <mat-label>Account Type</mat-label>
         <mat-select required formControlName="accountType">
-          <mat-option
-            *ngFor="let accountType of accountTypes"
-            [value]="accountType"
-          >
+          <mat-option *ngFor="let accountType of accountTypes" [value]="accountType">
             {{ accountType }}
           </mat-option>
         </mat-select>
@@ -39,19 +24,9 @@
           Account Type is required
         </mat-error>
       </mat-form-field>
-      <mat-form-field
-        appearance="outline"
-        class="full-width-input give-me-some-space top margin-25"
-        color="primary"
-      >
+      <mat-form-field appearance="outline" class="full-width-input give-me-some-space top margin-25" color="primary">
         <mat-label>When was the Account Opened</mat-label>
-        <input
-          matInput
-          [matDatepicker]="picker"
-          placeholder="Choose a date"
-          formControlName="opened"
-          required
-        />
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="opened" required />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="accountFormGroup.controls['opened'].invalid">
@@ -71,19 +46,14 @@
           Account Current Balance is required
         </mat-error>
       </mat-form-field>
-      <div class="full-width-input give-me-some-space top margin-25">
+      <section class="full-width-input give-me-some-space top margin-25">
         <mat-checkbox formControlName="active">Account is Active</mat-checkbox>
-      </div>
-      <div class="full-width-input give-me-some-space top margin-25">
-        <button
-          type="submit"
-          mat-raised-button
-          color="primary"
-          [disabled]="accountFormGroup.invalid"
-        >
+      </section>
+      <section class="full-width-input give-me-some-space top margin-25">
+        <button type="submit" mat-raised-button color="primary" [disabled]="accountFormGroup.invalid">
           Create Account
         </button>
-      </div>
+      </section>
     </form>
   </mat-card-content>
 </mat-card>
