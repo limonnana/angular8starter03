@@ -3,9 +3,9 @@
     #appSideNav
     [mode]="viewportMobileQuery.matches ? 'over' : 'side'"
     [opened]="!viewportMobileQuery.matches"
-    [fixedInViewport]="viewportMobileQuery.matches"
+    [fixedInViewport]="viewportMobileQuery.matches" *ngIf="isLogged"
   >
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" *ngIf="isLogged">
       <mat-toolbar-row>
         <h1>Menu</h1>
         <span class="fill-space"></span>
@@ -14,7 +14,8 @@
         </button>
       </mat-toolbar-row>
     </mat-toolbar>
-    <mat-nav-list>
+
+    <mat-nav-list *ngIf="isLogged">
       <!-- set the `routerLink` on the `mat-list-item` that way it will route if any of the list item is clicked -->
       <mat-list-item routerLink="/">
         <mat-icon matListIcon>home</mat-icon>
@@ -38,7 +39,7 @@
           <mat-icon>menu</mat-icon>
         </button>
         <h1 routerLink="/" class="app-brand">
-          Bank Account Manager
+         Limonnana
         </h1>
       </mat-toolbar-row>
     </mat-toolbar>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import * as fromContainers from './containers';
 
 const routes: Routes = [
@@ -12,6 +13,14 @@ const routes: Routes = [
   {
     path: 'accounts',
     loadChildren: 'src/accounts/accounts.module#AccountsModule'
+  }, 
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  { 
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 

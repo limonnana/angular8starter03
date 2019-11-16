@@ -9,17 +9,24 @@ import { AppComponent } from './app.component';
 
 import * as fromComponents from './components';
 import * as fromContainers from './containers';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ...fromContainers.containers,
-    ...fromComponents.components
+    ...fromComponents.components,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialDesignModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
