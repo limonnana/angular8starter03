@@ -30,6 +30,10 @@
         <mat-icon matListIcon>add</mat-icon>
         <a matLine>Create Account</a>
       </mat-list-item>
+      <mat-list-item (click)="logout()" *ngIf="isLogged">
+         <mat-icon matListIcon>logout</mat-icon>
+         <a matLine>Logout</a>
+      </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="main-content">

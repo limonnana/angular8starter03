@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../../entities/user';
-import { Login } from '../../entities/login';
-import { environment } from '../../../environments/environment';
+import { User } from '.././models/user';
+import { Login } from '.././models/login';
+import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { ApiResponse } from '../../entities/api.response';
+import { ApiResponse } from '.././models/api.response';
 import { HttpCustomService } from './http-custom.service';
 
 @Injectable({

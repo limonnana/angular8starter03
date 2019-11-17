@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../../entities/user';
-import { environment } from '../../../environments/environment';  
-import { Login } from '../../entities/login';
+import { User } from '.././models/user';
+import { environment } from '../../environments/environment';  
+import { Login } from '.././models/login';
 import { retry, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
