@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
             this.credentials.token = this.user.token;
             this.credentials.role = this.user.role;
             this.credentialsService.setCredentials(this.credentials);
+            this.credentialsService.credentialsEEmitChange(this.credentials);
             this.router.navigate(['accounts']);
       }else{
         this.wrongCredentials = "wrong credentials";

@@ -2,6 +2,8 @@ import { Component, ChangeDetectorRef, OnDestroy , OnInit } from '@angular/core'
 import { MediaMatcher } from '@angular/cdk/layout';
 import { CredentialsService } from './services/credentials.service';
 import {Router} from "@angular/router";
+import { Observable, of } from 'rxjs';
+import { Credentials } from './models/credentials';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,9 @@ export class AppComponent implements OnDestroy , OnInit{
   viewportMobileQuery: MediaQueryList;
 
   private _viewportQueryListener: () => void;
-  isLogged: boolean;
+  isLogged$ : Observable<boolean>;
+  isAuthenticated$: Observable<boolean>;
+  private credentials: Credentials | null = null;
 
   constructor(
     private changeDetectionRef: ChangeDetectorRef,
@@ -23,11 +27,18 @@ export class AppComponent implements OnDestroy , OnInit{
     this.viewportMobileQuery = media.matchMedia('(max-width: 600px)');
     this._viewportQueryListener = () => changeDetectionRef.detectChanges();
     this.viewportMobileQuery.addEventListener('change', this._viewportQueryListener);
+    this.credentialsService.credentialEmitter.subscribe(credentialsE => {
+      this.credentials = credentialsE;
+      if(this.credentials){
+      this.isLogged$ = of(true);
+      }
+    });
    }
 
   ngOnInit() {
-    this.isLogged = this.credentialsService.isAuthenticated();
-    console.log('is authentik in header: ' + this.isLogged)
+    this.isLogged$ = this.credentialsService.isAuthenticated();
+    this.isLogged$.subscribe(res => console.log('THE ANSWER IS: ' + res));
+    //console.log('is authentik in header: ' + this.isLogged$)
   }
 
   ngOnDestroy(): void {
@@ -38,6 +49,8 @@ export class AppComponent implements OnDestroy , OnInit{
     //this.store.dispatch(authLogout());
     this.credentialsService.logout();
    // this.updateMenu();
+   this.credentials = null;
+   this.credentialsService.credentialsEEmitChange(this.credentials);
    this.router.navigate(['login']);
    console.log('it has been logged out')
   }

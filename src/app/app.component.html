@@ -3,9 +3,9 @@
     #appSideNav
     [mode]="viewportMobileQuery.matches ? 'over' : 'side'"
     [opened]="!viewportMobileQuery.matches"
-    [fixedInViewport]="viewportMobileQuery.matches" *ngIf="isLogged"
+    [fixedInViewport]="viewportMobileQuery.matches" *ngIf="isLogged$ | async"
   >
-    <mat-toolbar color="primary" *ngIf="isLogged">
+    <mat-toolbar color="primary" *ngIf="isLogged$ | async">
       <mat-toolbar-row>
         <h1>Menu</h1>
         <span class="fill-space"></span>
@@ -15,7 +15,7 @@
       </mat-toolbar-row>
     </mat-toolbar>
 
-    <mat-nav-list *ngIf="isLogged">
+    <mat-nav-list *ngIf="isLogged$ | async">
       <!-- set the `routerLink` on the `mat-list-item` that way it will route if any of the list item is clicked -->
       <mat-list-item routerLink="/">
         <mat-icon matListIcon>home</mat-icon>
@@ -30,7 +30,7 @@
         <mat-icon matListIcon>add</mat-icon>
         <a matLine>Create Account</a>
       </mat-list-item>
-      <mat-list-item (click)="logout()" *ngIf="isLogged">
+      <mat-list-item (click)="logout()" *ngIf="isLogged$ | async">
          <mat-icon matListIcon>logout</mat-icon>
          <a matLine>Logout</a>
       </mat-list-item>

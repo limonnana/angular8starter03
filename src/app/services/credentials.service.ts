@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { Role } from '../models/role';
 import { Credentials } from '../models/credentials';
 
@@ -18,6 +18,8 @@ const nameKey = 'name';
 export class CredentialsService {
 
   private _credentials: Credentials | null = null;
+  private credentialsE = new Subject<Credentials>();
+  public credentialEmitter = this.credentialsE.asObservable();
 
   constructor() {
     const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);
@@ -26,9 +28,16 @@ export class CredentialsService {
     }
   }
 
+  credentialsEEmitChange(cre: Credentials) {
+    this.credentialsE.next(cre);
+}
   
-  isAuthenticated(): boolean {
-    return  !!this.credentials;
+  isAuthenticated(): Observable<boolean> {
+    if(this._credentials !== null){
+      return of(true);
+    }else{
+      return of(false);
+    }
   }
 
   isAdmin(): Observable<boolean> {
