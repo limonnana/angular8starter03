@@ -16,6 +16,7 @@ export class AppComponent implements OnDestroy , OnInit{
   private _viewportQueryListener: () => void;
   isLogged$ : Observable<boolean>;
   isAuthenticated$: Observable<boolean>;
+  isLoggedOut : boolean;
   private credentials: Credentials | null = null;
 
   constructor(
@@ -31,18 +32,27 @@ export class AppComponent implements OnDestroy , OnInit{
       this.credentials = credentialsE;
       if(this.credentials){
       this.isLogged$ = of(true);
+      this.isLoggedOut = false;
+      }else{
+        this.isLogged$ = of(false); 
+        this.isLoggedOut = true;
       }
     });
    }
 
   ngOnInit() {
     this.isLogged$ = this.credentialsService.isAuthenticated();
-    this.isLogged$.subscribe(res => console.log('THE ANSWER IS: ' + res));
+    this.isLogged$.subscribe(res =>   res == true ? this.isLoggedOut = false : this.isLoggedOut = true);
+   
     //console.log('is authentik in header: ' + this.isLogged$)
   }
 
   ngOnDestroy(): void {
     this.viewportMobileQuery.removeEventListener('change', this._viewportQueryListener);
+  }
+  
+  login(){
+    this.router.navigate(['login']);
   }
 
   logout() {
@@ -51,6 +61,7 @@ export class AppComponent implements OnDestroy , OnInit{
    // this.updateMenu();
    this.credentials = null;
    this.credentialsService.credentialsEEmitChange(this.credentials);
+   this.isLoggedOut = true;
    this.router.navigate(['login']);
    console.log('it has been logged out')
   }
