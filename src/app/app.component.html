@@ -18,7 +18,7 @@
       <!-- set the `routerLink` on the `mat-list-item` that way it will route if any of the list item is clicked -->
       <mat-list-item routerLink="/">
         <mat-icon matListIcon>home</mat-icon>
-        <a matLine>Home</a> 
+        <a matLine>Home</a>                    
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item routerLink="/accounts" *ngIf="isLogged$ | async">
