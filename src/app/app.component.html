@@ -21,6 +21,10 @@
         <a matLine>Home</a>                    
       </mat-list-item>
       <mat-divider></mat-divider>
+      <mat-list-item routerLink="/users" *ngIf="isLogged$ | async">
+        <mat-icon matListIcon>perm_identity</mat-icon>
+        <a matLine>Users</a>
+      </mat-list-item>
       <mat-list-item routerLink="/accounts" *ngIf="isLogged$ | async">
         <mat-icon matListIcon>account_balance</mat-icon>
         <a matLine>Accounts</a>

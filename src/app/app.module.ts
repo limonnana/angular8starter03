@@ -12,7 +12,11 @@ import * as fromContainers from './containers';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http'; 
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { UserComponent } from './components/user/user.component'; 
+import { JwtInterceptor } from './utils/jwt.interceptor';
+import { ErrorInterceptor } from './utils/ErrorInterceptor';
+import { AddUserComponent } from './components/user/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
     ...fromContainers.containers,
     ...fromComponents.components,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

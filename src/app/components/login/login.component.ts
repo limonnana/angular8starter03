@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   user: User;
   credentials = new Credentials('', '',  Role.USER);
-  isAuthenticated$: Observable<boolean>;
   isAdmin$: Observable<boolean>
 
   constructor(
