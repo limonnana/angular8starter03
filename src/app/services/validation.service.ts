@@ -1,11 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Login } from '.././models/login';
+import { Login } from '../models/login';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValidationService {
   constructor() {}
+
+  validateNewUserForm(user: User): string{
+    let error: string = '';
+
+    if (!user.email) {
+      error = ' email is required ';
+    }
+    if (this.emailValidator(user.email)) {
+      error = (error ? '' : error) + ' email is not valid ';
+    }
+    return error;
+  }
 
   validateRegisterForm(login: Login): string {
     let error: string = '';

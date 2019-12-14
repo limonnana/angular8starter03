@@ -18,7 +18,8 @@ export class RegisterComponent implements OnInit {
   error: string;
   email: string = '';
 
-  constructor(private userService: UserService,
+  constructor(
+  private userService: UserService,
   private formBuilder: FormBuilder,
   private router: Router,
   private validationService: ValidationService

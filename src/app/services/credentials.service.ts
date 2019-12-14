@@ -40,6 +40,14 @@ export class CredentialsService {
     }
   }
 
+  isLogged(): boolean {
+    if(this._credentials !== null){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   isAdmin(): Observable<boolean> {
     if(this.getRole() === 'ADMIN'){
       return of(true);
