@@ -19,10 +19,18 @@ export class UserComponent implements OnInit {
     });
   }
 
+  onEditClick(id){
+    console.log('edit id: ' + id);
+  }
+
+  onDeleteClick(id){
+    console.log('delete id: ' + id);
+  }
+
   get columns(): string[] {
     // return a string array of the columns in the table
     // the order of these values will be the order your columns show up in
-    return ['name', 'email', 'phone'];
+    return ['name', 'email', 'phone', 'edit', 'delete'];
   }
 
 }

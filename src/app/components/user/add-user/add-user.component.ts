@@ -14,8 +14,9 @@ import { User } from 'src/app/models/user';
 export class AddUserComponent implements OnInit {
 
   newUserFormGroup: FormGroup = null;
-  error: string;
+  error: string = '';
   email: string = '';
+  isEmailAlreadyTaken: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -35,10 +36,10 @@ export class AddUserComponent implements OnInit {
       console.log('error from form: ' + this.error);
       return;
     } else {
-     // this.userService.save(userFromForm).subscribe(data => {
+      this.userService.save(userFromForm).subscribe(data => {
        // this.router.navigate(['login']);
-      // console.log('the answer from server is: ' + data.name);
-    //  });
+       console.log('the answer from server is: ' + data.name);
+     });
     }
   }
 
@@ -53,17 +54,17 @@ export class AddUserComponent implements OnInit {
 
   public isEmailTaken() {
     this.error = '';
-   
     const userFromForm = this.newUserFormGroup.value;
     let email: string = userFromForm.email;
     let login = new Login(email, '', '', false);
     this.userService.isEmailTaken(login).subscribe(data => {
       if (data.result === 'true') {
-        this.error =
-          'Email already registered, please login or use forgot password ';
+        this.isEmailAlreadyTaken = true;
+        this.error = 'this email is alredy registered, please login or reset the password';
     } 
     });
   }
   
 
 }
+
