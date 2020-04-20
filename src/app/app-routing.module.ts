@@ -6,6 +6,7 @@ import { UserComponent } from './components/user/user.component';
 import * as fromContainers from './containers';
 import { AuthGuard } from './auth-guard';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
+import { EditUserComponent } from './components/user/edit-user/edit-user.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,11 @@ const routes: Routes = [
   {
     path: 'addUser',
     component: AddUserComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'editUser/:id',
+    component: EditUserComponent,
     canActivate: [AuthGuard]
   },
   { 

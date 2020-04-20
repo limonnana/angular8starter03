@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user',
@@ -11,7 +12,10 @@ export class UserComponent implements OnInit {
 
   userList: User[];
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.userService.getUsers().subscribe(data => {
@@ -21,6 +25,7 @@ export class UserComponent implements OnInit {
 
   onEditClick(id){
     console.log('edit id: ' + id);
+    this.router.navigate(['editUser/' + id]);
   }
 
   onDeleteClick(id){

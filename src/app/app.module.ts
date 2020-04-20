@@ -17,6 +17,7 @@ import { UserComponent } from './components/user/user.component';
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { ErrorInterceptor } from './utils/ErrorInterceptor';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
+import { EditUserComponent } from './components/user/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddUserComponent } from './components/user/add-user/add-user.component'
     LoginComponent,
     RegisterComponent,
     UserComponent,
-    AddUserComponent
+    AddUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
