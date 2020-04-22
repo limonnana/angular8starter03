@@ -18,6 +18,9 @@ import { JwtInterceptor } from './utils/jwt.interceptor';
 import { ErrorInterceptor } from './utils/ErrorInterceptor';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
 import { EditUserComponent } from './components/user/edit-user/edit-user.component';
+import { MatDialogModule } from "@angular/material";
+import { UserModalComponent } from './components/user/user-modal/user-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { EditUserComponent } from './components/user/edit-user/edit-user.compone
     RegisterComponent,
     UserComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    UserModalComponent
   ],
   imports: [
     BrowserModule,
@@ -37,8 +41,10 @@ import { EditUserComponent } from './components/user/edit-user/edit-user.compone
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule
   ],
+  entryComponents: [UserModalComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }

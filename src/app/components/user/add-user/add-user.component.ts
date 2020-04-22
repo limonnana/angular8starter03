@@ -37,7 +37,7 @@ export class AddUserComponent implements OnInit {
       return;
     } else {
       this.userService.save(userFromForm).subscribe(data => {
-       // this.router.navigate(['login']);
+        this.router.navigate(['users']);
        console.log('the answer from server is: ' + data.name);
      });
     }

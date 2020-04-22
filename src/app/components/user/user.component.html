@@ -11,7 +11,7 @@
            Add User
         </button>
 
-    <mat-table [dataSource]="userList">
+    <mat-table [dataSource]="dataSource">
 
         <ng-container matColumnDef="name">
             <!-- define the header for the id column. add sorting -->
@@ -65,7 +65,7 @@
               <!-- define the cell that will contain the data for each record in the data source -->
               <!-- row gives you access to the Account record for a given row in the data source -->
               <mat-cell *matCellDef="let row">
-                  <button mat-icon-button (click)="onDeleteClick(row.id)">
+                  <button mat-icon-button (click)="openDialog(row.id)">
                       <mat-icon>delete</mat-icon>
                       </button>
               </mat-cell>
@@ -78,4 +78,6 @@
     </mat-table>
       </mat-card-content>
     </mat-card>
+
+    
     
