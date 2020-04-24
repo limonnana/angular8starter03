@@ -29,9 +29,9 @@
         <mat-icon matListIcon>account_balance</mat-icon>
         <a matLine>Accounts</a>
       </mat-list-item>
-      <mat-list-item routerLink="/accounts/create" *ngIf="isLogged$ | async">
-        <mat-icon matListIcon>add</mat-icon>
-        <a matLine>Create Account</a>
+      <mat-list-item routerLink="/products" *ngIf="isLogged$ | async">
+        <mat-icon matListIcon>devices_other</mat-icon>
+       <a matLine>Products</a>
       </mat-list-item>
       <mat-list-item (click)="logout()" *ngIf="isLogged$ | async">
          <mat-icon matListIcon>logout</mat-icon>
@@ -50,7 +50,7 @@
           <mat-icon>menu</mat-icon>
         </button>
         <h1 routerLink="/" class="app-brand">
-         Limonnana
+         Limonnana 
         </h1>
       </mat-toolbar-row>
     </mat-toolbar>

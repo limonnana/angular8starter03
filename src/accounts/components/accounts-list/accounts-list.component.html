@@ -5,6 +5,12 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <mat-nav-list>
+    <mat-list-item routerLink="/accounts/create">
+      <mat-icon matListIcon>add</mat-icon>
+      <a matLine>Create Account</a>
+    </mat-list-item>
+    </mat-nav-list>
     <!-- Form Container for our filter form group for the user to filter the accounts list -->
     <form novalidate [formGroup]="filterTableFormGroup">
       <mat-form-field appearance="outline" class="full-width-input">

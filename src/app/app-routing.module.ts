@@ -7,6 +7,9 @@ import * as fromContainers from './containers';
 import { AuthGuard } from './auth-guard';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
 import { EditUserComponent } from './components/user/edit-user/edit-user.component';
+import { ProductsComponent } from './components/product/products/products.component';
+import { CreateProductComponent } from './components/product/create-product/create-product.component';
+import { EditProductComponent } from './components/product/edit-product/edit-product.component';
 
 const routes: Routes = [
   {
@@ -40,6 +43,21 @@ const routes: Routes = [
   { 
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path:'products',
+    component: ProductsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'create-product',
+    component: CreateProductComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'edit-product',
+    component: EditProductComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

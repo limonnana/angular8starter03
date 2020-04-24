@@ -19,10 +19,7 @@ export class UserService {
     private httpCustom: HttpCustomService
   ) {}
 
-  user: User[];
-
-  // return this.http.post<[User]>(`${environment.secureUserApi}/findAll`, new User());
-
+ 
   public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${environment.secureUserApi}/findAll`);
   }

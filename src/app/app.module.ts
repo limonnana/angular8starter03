@@ -20,6 +20,9 @@ import { AddUserComponent } from './components/user/add-user/add-user.component'
 import { EditUserComponent } from './components/user/edit-user/edit-user.component';
 import { MatDialogModule } from "@angular/material";
 import { UserModalComponent } from './components/user/user-modal/user-modal.component';
+import { CreateProductComponent } from './components/product/create-product/create-product.component';
+import { ProductsComponent } from './components/product/products/products.component';
+import { EditProductComponent } from './components/product/edit-product/edit-product.component';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import { UserModalComponent } from './components/user/user-modal/user-modal.comp
     UserComponent,
     AddUserComponent,
     EditUserComponent,
-    UserModalComponent
+    UserModalComponent,
+    CreateProductComponent,
+    ProductsComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

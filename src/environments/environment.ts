@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   secureUserApi: 'http://localhost:8080/secure/user',
+  secureProductApi: 'http://localhost:8080/secure/product',
   domain: 'http://localhost:8080'
 
 };
