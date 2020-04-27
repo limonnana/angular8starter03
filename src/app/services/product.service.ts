@@ -22,4 +22,8 @@ export class ProductService {
     console.log(JSON.stringify(product));
     return this.http.post<Product>(`${environment.secureProductApi}/create`, product);
   }
+
+  public getProductById(id: number){
+    return this.http.get<Product>(`${environment.secureProductApi}/getProduct/` + id);
+  }
 }

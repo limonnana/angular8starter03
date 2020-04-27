@@ -1,12 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Login } from '../models/login';
 import { User } from '../models/user';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValidationService {
   constructor() {}
+
+  validateNewProductForm(product: Product){
+    let error: string = '';
+
+    if (!product.name) {
+      error = ' name is required ';
+    }
+    if(!product.price) {
+      error = ' price is required ';
+    }
+    return error;
+  }
 
   validateNewUserForm(user: User): string{
     let error: string = '';
