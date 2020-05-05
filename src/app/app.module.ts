@@ -22,7 +22,9 @@ import { MatDialogModule } from "@angular/material";
 import { UserModalComponent } from './components/user/user-modal/user-modal.component';
 import { CreateProductComponent } from './components/product/create-product/create-product.component';
 import { ProductsComponent } from './components/product/products/products.component';
-import { EditProductComponent } from './components/product/edit-product/edit-product.component';
+import { DescriptionModalComponent } from './components/product/description-modal/description-modal.component';
+import { GenericModalComponent } from './components/modal/generic-modal/generic-modal.component';
+
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { EditProductComponent } from './components/product/edit-product/edit-pro
     UserModalComponent,
     CreateProductComponent,
     ProductsComponent,
-    EditProductComponent
+    DescriptionModalComponent,
+    GenericModalComponent
   ],
   imports: [
     BrowserModule,

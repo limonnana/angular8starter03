@@ -3,6 +3,7 @@ import { MatTableDataSource, MatDialog } from '@angular/material';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
+import { DescriptionModalComponent } from '../description-modal/description-modal.component';
 
 @Component({
   selector: 'app-products',
@@ -34,6 +35,15 @@ export class ProductsComponent implements OnInit {
   onEditClick(id){
     console.log('edit id: ' + id);
     this.router.navigate(['editProduct/' + id]);
+  }
+
+  openDialog(description): void {
+    const dialogRef = this.dialog.open(DescriptionModalComponent, {
+      width: '400px',
+      data: {
+        description:description
+      }
+    });
   }
 
 }

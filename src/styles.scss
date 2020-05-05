@@ -76,3 +76,15 @@ body {
     }
   }
 }
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  [align='end'] {
+    justify-content: flex-end;
+  }
+  [align='right'] {
+    justify-content: right;
+  }
+}
+
