@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatDialog, MatDialogRef } from '@angular/material';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 import { DescriptionModalComponent } from '../description-modal/description-modal.component';
+import { GenericModalComponent } from '../../modal/generic-modal/generic-modal.component';
 
 @Component({
   selector: 'app-products',
@@ -13,6 +14,7 @@ import { DescriptionModalComponent } from '../description-modal/description-moda
 export class ProductsComponent implements OnInit {
 
   private dataSource = new MatTableDataSource<Product>([]);
+  
 
   constructor(
     private productService: ProductService,
@@ -29,7 +31,7 @@ export class ProductsComponent implements OnInit {
   get columns(): string[] {
     // return a string array of the columns in the table
     // the order of these values will be the order your columns show up in
-    return ['name', 'price', 'description', 'edit', 'delete'];
+    return ['id' , 'name', 'price', 'description', 'edit', 'delete'];
   }
 
   onEditClick(id){
@@ -37,13 +39,59 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['editProduct/' + id]);
   }
 
-  openDialog(description): void {
-    const dialogRef = this.dialog.open(DescriptionModalComponent, {
+  refresh() {
+    this.productService.getProducts().subscribe((data: Product[]) => {
+      this.dataSource.data = data;
+    });
+  }
+
+  openDialogDescription(description): void {
+    const dialogRefDescription = this.dialog.open(DescriptionModalComponent, {
       width: '400px',
       data: {
-        description:description
+        description: description
+      }
+    });
+
+  }
+
+  openDialog(id): void {
+    const dialogRef = this.dialog.open(GenericModalComponent, {
+      width: '300px',
+      data: {
+        id: id,
+        type: 'product'
+      }
+    });
+  
+  dialogRef.afterClosed().subscribe(
+    data => {
+      if(data){
+        this.yesDelete(data.id);
+      }
+      }
+  );   
+  }
+
+  closeMe(): void {
+    this.dialog.closeAll();
+  }
+
+  yesDelete(id){
+    this.productService.delete(id).subscribe(data => {
+      console.log('Data: ' + data.message);
+      if(data.message === 200){
+        this.deleteFromTable(id);             
       }
     });
   }
 
+  
+
+  deleteFromTable(id: string){
+    this.dataSource.data.splice(+id,1);
+    this.refresh();
+  }
 }
+
+

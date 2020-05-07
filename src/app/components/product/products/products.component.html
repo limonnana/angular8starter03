@@ -12,6 +12,18 @@
         </button>
 
     <mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="id">
+        <!-- define the header for the id column. add sorting -->
+        <mat-header-cell *matHeaderCellDef>
+          Id
+        </mat-header-cell>
+        <!-- define the cell that will contain the data for each record in the data source -->
+        <!-- row gives you access to the Account record for a given row in the data source -->
+        <mat-cell *matCellDef="let row">
+          {{ row.id }}
+        </mat-cell>
+      </ng-container>
     
         <ng-container matColumnDef="name">
             <!-- define the header for the id column. add sorting -->
@@ -36,9 +48,9 @@
 
           <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef >
-              Description
+              Description 
             </mat-header-cell>
-            <mat-cell *matCellDef="let row" (click)="openDialog(row.description)">
+            <mat-cell *matCellDef="let row" (click)="openDialogDescription(row.description)">
                 <button mat-icon-button color="accent">
                      <mat-icon>info</mat-icon>
                   </button>

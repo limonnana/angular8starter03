@@ -4,6 +4,7 @@ import { HttpCustomService } from './http-custom.service';
 import { Product } from '../models/product';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { ApiResponse } from '../models/api.response';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,11 @@ export class ProductService {
 
   public getProductById(id: number){
     return this.http.get<Product>(`${environment.secureProductApi}/getProduct/` + id);
+  }
+
+  public delete(id: string) {
+    return this.http.delete<ApiResponse>(
+      `${environment.secureProductApi}/deleteProduct/` + id
+    );
   }
 }

@@ -12,14 +12,14 @@ interface DialogDescriptionData {
 })
 export class DescriptionModalComponent {
 
-  description: string;
+  productDetails: string;
 
   constructor(
     public dialogRef: MatDialogRef<DescriptionModalComponent>,
    
     @Inject(MAT_DIALOG_DATA) public data: DialogDescriptionData
     ) {
-       this.description = data.description;
+       this.productDetails = data.description;
      }
 
  

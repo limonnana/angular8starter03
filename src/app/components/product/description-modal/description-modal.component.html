@@ -1,10 +1,11 @@
-<mat-card>
-<div mat-dialog-actions>
-<button mat-button (click)="closeMe()" [mat-dialog-close]="true" align="end">
-    <mat-icon>close</mat-icon>
-</button>
-</div>
-<div mat-dialog-content style="margin-top: 4%;">
-<p>{{description}}</p>
-</div>
-</mat-card>
+<h1 mat-dialog-title>Product Details</h1>
+<section mat-dialog-content style="margin-top: 4%;">
+<p>{{productDetails}}</p>
+</section>
+
+<section mat-dialog-actions>
+    <span class="fill-space"></span>
+    <button mat-icon-button color="primary" (click)="closeMe()" [mat-dialog-close]="true">
+      <mat-icon>close</mat-icon>
+    </button>
+  </section>
