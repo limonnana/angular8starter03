@@ -20,9 +20,6 @@ import { AddUserComponent } from './components/user/add-user/add-user.component'
 import { EditUserComponent } from './components/user/edit-user/edit-user.component';
 import { MatDialogModule } from "@angular/material";
 import { UserModalComponent } from './components/user/user-modal/user-modal.component';
-import { CreateProductComponent } from './components/product/create-product/create-product.component';
-import { ProductsComponent } from './components/product/products/products.component';
-import { DescriptionModalComponent } from './components/product/description-modal/description-modal.component';
 import { GenericModalComponent } from './components/modal/generic-modal/generic-modal.component';
 
 
@@ -38,9 +35,6 @@ import { GenericModalComponent } from './components/modal/generic-modal/generic-
     AddUserComponent,
     EditUserComponent,
     UserModalComponent,
-    CreateProductComponent,
-    ProductsComponent,
-    DescriptionModalComponent,
     GenericModalComponent
   ],
   imports: [

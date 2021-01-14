@@ -34,6 +34,7 @@ export class EditUserComponent implements OnInit {
     this.userService.getUserById(id)
       .subscribe( data => {
         this.user.name = data.name;
+        this.user.lastName = data.lastName;
         this.user.phone = data.phone;
         this.user.email = data.email;
         this.user.id = id;
@@ -59,6 +60,7 @@ export class EditUserComponent implements OnInit {
   buildForm(): FormGroup {
     return this.fb.group({
       name: [null, Validators.required],
+      lastName: [null, Validators.required],
       email: [null, Validators.required],
       phone: [null, Validators.required],
       id:[null]

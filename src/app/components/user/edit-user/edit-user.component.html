@@ -11,10 +11,18 @@
                 <input matInput formControlName="id" />
             </mat-form-field>
         <mat-form-field appearance="outline" class="full-width-input" color="primary">
-          <mat-label>Full Name</mat-label>
+          <mat-label>Name</mat-label>
           <input matInput formControlName="name" required />
           <mat-error *ngIf="editForm.controls['name'].invalid">
             Name is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width-input" color="primary">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" required />
+          <mat-error *ngIf="editForm.controls['lastName'].invalid">
+            Last Name is required
           </mat-error>
         </mat-form-field>
 

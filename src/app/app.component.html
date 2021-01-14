@@ -25,14 +25,7 @@
         <mat-icon matListIcon>perm_identity</mat-icon>
         <a matLine>Users</a>
       </mat-list-item>
-      <mat-list-item routerLink="/accounts" *ngIf="isLogged$ | async">
-        <mat-icon matListIcon>account_balance</mat-icon>
-        <a matLine>Accounts</a>
-      </mat-list-item>
-      <mat-list-item routerLink="/products" *ngIf="isLogged$ | async">
-        <mat-icon matListIcon>devices_other</mat-icon>
-       <a matLine>Products</a>
-      </mat-list-item>
+      
       <mat-list-item (click)="logout()" *ngIf="isLogged$ | async">
          <mat-icon matListIcon>logout</mat-icon>
          <a matLine>Logout</a>
@@ -50,7 +43,7 @@
           <mat-icon>menu</mat-icon>
         </button>
         <h1 routerLink="/" class="app-brand">
-         Limonnana 
+         Tricks for cash Admin 
         </h1>
       </mat-toolbar-row>
     </mat-toolbar>

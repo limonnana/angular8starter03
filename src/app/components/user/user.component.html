@@ -25,6 +25,18 @@
             </mat-cell>
           </ng-container>
 
+          <ng-container matColumnDef="lastName">
+            <!-- define the header for the id column. add sorting -->
+            <mat-header-cell *matHeaderCellDef>
+              Last name
+            </mat-header-cell>
+            <!-- define the cell that will contain the data for each record in the data source -->
+            <!-- row gives you access to the Account record for a given row in the data source -->
+            <mat-cell *matCellDef="let row">
+              {{ row.lastName }}
+            </mat-cell>
+          </ng-container>
+
           <ng-container matColumnDef="email">
             <mat-header-cell *matHeaderCellDef>
               Email

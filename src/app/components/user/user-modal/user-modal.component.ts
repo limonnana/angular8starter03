@@ -16,10 +16,12 @@ export class UserModalComponent implements OnInit {
   form: FormGroup;
   id:string;
 
-  constructor(
+  constructor
+  (
     public dialogRef: MatDialogRef<UserModalComponent>,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {
 
       this.id = data.id;
     }

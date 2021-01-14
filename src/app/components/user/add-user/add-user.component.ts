@@ -47,6 +47,7 @@ export class AddUserComponent implements OnInit {
    buildForm(): FormGroup {
     return this.fb.group({
       name: [null, Validators.required],
+      lastName: [null, Validators.required],
       email: [null, Validators.required],
       phone: [null, Validators.required]
     });
@@ -60,7 +61,7 @@ export class AddUserComponent implements OnInit {
     this.userService.isEmailTaken(login).subscribe(data => {
       if (data.result === 'true') {
         this.isEmailAlreadyTaken = true;
-        this.error = 'this email is alredy registered, please login or reset the password';
+        this.error = 'This email is alredy registered, please login or reset the password';
     } 
     });
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '.././models/user';
 import { Login } from '.././models/login';
 import { environment } from '../../environments/environment';
@@ -7,6 +7,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { ApiResponse } from '.././models/api.response';
 import { HttpCustomService } from './http-custom.service';
+import { CredentialsService } from './credentials.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,14 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private httpCustom: HttpCustomService
+    //private http: HttpCustomService,
+    private httpCustom: HttpCustomService,
+    private credentialServices: CredentialsService
   ) {}
 
  
   public getUsers(): Observable<User[]> {
+    
     return this.http.get<User[]>(`${environment.secureUserApi}/findAll`);
   }
 
@@ -40,8 +44,8 @@ export class UserService {
     );
   }
 
-  getUserById(id: number) {
-    return this.http.get<User>(`${environment.secureUserApi}/getUser/` + id);
+  getUserById(id: string) {
+    return this.http.get<User>(`${environment.secureUserApi}/getUserById/` + id);
   }
 
   updateUser(user: User): Observable<ApiResponse> {

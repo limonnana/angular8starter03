@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { MatDialog} from "@angular/material";
 import { UserModalComponent } from 'src/app/components/user/user-modal/user-modal.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { CredentialsService } from 'src/app/services/credentials.service';
 
 
 
@@ -21,7 +22,8 @@ export class UserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+   // private credentialServices: CredentialsService
   ){}
 
 
@@ -29,6 +31,8 @@ export class UserComponent implements OnInit {
     this.userService.getUsers().subscribe(data => {
       this.dataSource.data = data;
     });
+    //let userCredentials = this.credentialServices.credentials;
+   // console.log('Credentials: ' + userCredentials.token);
   }
 
 
@@ -65,12 +69,13 @@ export class UserComponent implements OnInit {
   get columns(): string[] {
     // return a string array of the columns in the table
     // the order of these values will be the order your columns show up in
-    return ['name', 'email', 'phone', 'edit', 'delete'];
+    return ['name', 'lastName','email', 'phone', 'edit', 'delete'];
   }
 
   
 
   yesDelete(id){
+    console.log('Delete id: ' + id);
     this.userService.delete(id).subscribe(data => {
       console.log('Data: ' + data.message);
       if(data.message === 200){
